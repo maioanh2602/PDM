@@ -1,0 +1,14 @@
+{
+  "name": "sysinfoapp",
+  "version": "1.0.0",
+  "description": "Library Management Project",
+  "main": "../core/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Jerry Nguyen",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^8.0.1"
+  }
+}

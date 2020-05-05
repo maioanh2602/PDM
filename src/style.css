@@ -1,0 +1,150 @@
+.background {
+    background: url('../img/login_bg_1.jpg') no-repeat center center fixed;
+    background-size: cover
+}
+
+.item1 {grid-area: logo; height: auto; margin: auto;}
+.item2 {grid-area: library; font-size: 2.09375rem}
+.item3 {grid-area: university; font-size: 0.54375rem}
+
+.logo-grid {
+  display: grid;
+  grid-template-areas: 'logo library' 'logo university';
+  grid-gap: 0px;
+  padding: 0px;
+}
+
+.is-transparent {
+  opacity: 0.5;
+}
+
+.no-transparent {
+  opacity: 1;
+}
+
+.navbar-inner {
+  background-color:transparent;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #1a1a1a !important;
+  display: table;
+  width: 100%;
+  color: #fff;
+}
+
+.copyright-div {
+  text-align: center;
+  vertical-align: left;
+  width: 80%;
+  margin: auto auto;
+  display: table-cell;
+}
+
+a {
+  color: #fff;
+}
+
+button.status {
+  text-align: right;
+  display: table-cell;
+}
+
+.close-modal {
+  margin: auto auto;
+}
+
+div.close-div {
+  text-align: right ;
+}
+div.status-div {
+  text-align: left;
+}
+
+#clear { 
+  clear: both;
+}
+
+#container {
+  width: 100%;
+  margin: auto;
+}
+
+.welcome {
+  float:left;
+  width: 60%;
+  margin: auto;
+}
+
+.or-spacer-vertical {
+  display:inline-block;
+  margin: auto;
+  position:relative; 
+}
+
+.mask { 
+    overflow:hidden; width:80px; height:450px; 
+    /* outline:1px solid pink; */
+}
+
+.left .mask:after { 
+    content:''; 
+    display:block; margin-left:-80px;
+    width:20px; height:100%;  
+    border-radius:12px / 125px;  
+    box-shadow:0 0 8px black;
+}
+
+.right .mask:before { 
+    content:''; 
+    display:block; margin-left:80px;
+    width:20px; height:100%; 
+    border-radius:12px / 125px; 
+    box-shadow:0 0 8px black;
+  }
+
+
+
+.middle {
+  float: left;
+  width: 10%;
+}
+.loginform {
+  float: right;
+  width: 30%;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: lightblue;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: lightblue;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: lightblue;
+}
+
+select.role {
+  width: 100%;
+  border: none;
+  background-color: lightblue;
+}

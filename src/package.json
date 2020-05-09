@@ -2,7 +2,7 @@
   "name": "sysinfoapp",
   "version": "1.0.0",
   "description": "Library Management Project",
-  "main": "../core/main.js",
+  "main": "./core/main.js",
   "scripts": {
     "start": "electron ."
   },

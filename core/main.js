@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
 const remote = require('electron').remote;
@@ -8,15 +8,17 @@ let windows;
 function createWindow() {
   // create BrowserWindow
   windows = new BrowserWindow({
-        width: 1366,
-        height: 768,
-        icon:__dirname+'/img/book.png',
-        frame: false,
-        show: false,
-        resizable: false,
-        webPreferences: {
-            nodeIntegration: true
-        }});
+    width: 1366,
+    height: 768,
+    // closable: false,
+    icon: '../img/people.ico',
+    frame: false,
+    show: false,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
   windows.setMenu(null);
   // load index.html
   windows.loadURL(url.format({
@@ -29,27 +31,32 @@ function createWindow() {
     windows.show()
   })
   // Show devtools
-  windows.webContents.openDevTools();
+  // windows.webContents.openDevTools();
 
   windows.on('close', () => {
     win = null;
   });
 }
-  //allow renderer process reuse
-  app.allowRendererProcessReuse = true;
+//allow renderer process reuse
+app.allowRendererProcessReuse = true;
 
-  // run create windows function
-  app.on('ready', createWindow);
+// run create windows function
+app.on('ready', createWindow);
 
-  // quit when all windows are close
-  app.on('window-all-closed', () => {
-    if(process.platform != 'darwin') {
-      app.quit();
-    }})
+app.on('close', function (event) {
+  event.preventDefault();
+})
 
-  //activate
-  app.on('activate',() =>{
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  })
+// quit when all windows are close 
+app.on('window-all-closed', () => {
+  if (process.platform != 'darwin') {
+    app.quit();
+  }
+})
+
+//activate
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+})

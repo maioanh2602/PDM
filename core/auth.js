@@ -24,7 +24,7 @@ function validateForm() {
     var user_password = document.forms["loginForm"]["userPassword"].value;
     var user_role = document.forms["loginForm"]["userRole"].value;
 
-    var id = "admin";
+    var id = "admin";    
     var password = "12345"
     var role = "Admin";
     var name = "Administrator";

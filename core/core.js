@@ -16,12 +16,30 @@ const url = require('url');
 //      }
 // });
 
+//Nav Object
 const navar = document.getElementById("navbar");
-function appendObjectToNav(msg = '') {
+function appendObjectToNav(msg = '', class_ = '') {
   const div = document.createElement('div');
-
+  if (class_ != '') div.className = class_;
   div.innerHTML = msg;
   navar.appendChild(div);
+}
+
+//Body Object
+const body = document.getElementById("body");
+function appendObjectToBody(msg = '') {
+  const div = document.createElement('div');
+  div.innerHTML = msg;
+  body.appendChild(div);
+}
+
+//Footer Object
+const footer = document.getElementById("footer");
+function appendObjectToFooter(msg = '', class_ = '') {
+  const div = document.createElement('div');
+  if (class_ != '') div.className = class_;
+  div.innerHTML = msg;
+  footer.appendChild(div);
 }
 
 // When a new message is received:
@@ -63,26 +81,20 @@ nav = '\
           </ul> \
         </div>';
 
-appendObjectToNav(logo);
-appendObjectToNav(nav);
-
-const body = document.getElementById("body");
-function appendObjectToBody(msg = '') {
-  const div = document.createElement('div');
-
-  div.innerHTML = msg;
-  body.appendChild(div);
-}
+searchBox = '\
+        <div class="input-bar-item"><input class="mr-sm-0" type="text" placeholder="Search something here..."></div> \
+        <div class="input-bar-item"><button class="btn btn-secondary my-2 my-sm-2">Search</button></div> \
+  ';
 
 welcomeBody = '  \
 <div class="welcome no-transparent">  \
   <h1 class="display-3">Welcome to <br>IU Library!</h1>  \
-  <p class="lead"> Brief newsletter today</p>  \
-  <hr class="my-4">  \
-  <p>>> UWE Student: Take home exam tips</p>  \
-  <p>>> 21 April: Vietnam Book Day</p>  \
-  <p>>> Library Opening Hours</p>  \
-  <hr class="my-4">  \
+  <h3 class="lead"> Brief newsletter today</h3>  \
+  <hr style="width:80%" class="my-4"/>  \
+  <h4 class="lead"> >> UWE Student: Take home exam tips</h4>  \
+  <h4 class="lead"> >> 21 April: Vietnam Book Day</h4>  \
+  <h4 class="lead"> >> Library Opening Hours</h4>  \
+  <hr style="width:80%" class="my-4"/>  \
   <p class="lead">  \
     <a class="btn btn-primary" href="https://library.hcmiu.edu.vn/" role="button">Learn more</a>  \
   </p>  \
@@ -128,22 +140,26 @@ welcomeBody = '  \
 ';
 
 mainBody = '\
-<h1> Login successfully. </h1> \
+<h1> Hi </h1> \
 ';
 
+copyright = 'PDM Project &copy 2020 - App by Mai Oanh - Trương Đạt - Minh Quan';
+
+status = 'Status <span class="badge badge-pill badge-danger">Anonymous</span>';
+
+closeButton = ' \
+        <button id="close-btn" type="button" class="close-btn btn btn-primary">QUIT</button> \
+        </footer> \
+';
+
+//add to browser
+appendObjectToNav(logo);
+appendObjectToNav(nav);
+appendObjectToNav(searchBox, 'input-bar');
 appendObjectToBody(welcomeBody);
-
-
-
-
-
-
-
-
-
-
-
-
+appendObjectToFooter(closeButton);
+appendObjectToFooter(copyright, 'copyright-div');
+appendObjectToFooter(status, 'status-div');
 
 //get the close_modal
 var close_modal = document.getElementById("close-modal");

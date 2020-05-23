@@ -33,9 +33,10 @@ footer {
   display: table;
   width: 100%;
   color: #fff;
+  text-align: left;
 }
 
-.copyright-div {
+div.copyright-div {
   text-align: center;
   vertical-align: left;
   width: 80%;
@@ -47,6 +48,10 @@ a {
   color: #fff;
 }
 
+h4 {
+  text-align: left;
+  margin-left: 3rem;
+}
 button.status {
   text-align: right;
   display: table-cell;
@@ -56,9 +61,25 @@ button.status {
   margin: auto auto;
 }
 
-div.close-div {
-  text-align: right ;
+button.close-btn {
+  text-align: right;
+  display: table-cell;
 }
+
+.input-bar {
+  display: table;
+  text-align: right;
+}
+
+.input-bar-item {
+  display: table-cell;
+  width: 100%;
+}
+
+.input-bar-item > button {
+  margin-left: 5px;
+}
+
 div.status-div {
   text-align: left;
 }
@@ -76,6 +97,7 @@ div.status-div {
   float:left;
   width: 60%;
   margin: auto;
+  text-align: center;
 }
 
 .or-spacer-vertical {
@@ -147,4 +169,8 @@ select.role {
   width: 100%;
   border: none;
   background-color: lightblue;
+}
+
+div.search-box {
+  display: table;
 }

@@ -24,26 +24,28 @@ window.onclick = function (event) {
 };
 
 function returnRole(state) {
+    elem = document.getElementById('footer').lastChild;
+    footer.removeChild(elem);
     switch (state) {
         case "Student":
-            document.getElementById("status-btn").innerText =
-                "Status <span class=&quot;badge badge-pill badge-success&quot;>Student</span>";
+            status = 'Status <span class="badge badge-pill badge-success">Student</span>';
+            appendObjectToFooter(status,'status-div');
             break;
         case "Lecturer":
-            document.getElementById("status-btn").innerText =
-                "Status <span class=&quot;badge badge-pill badge-warning&quot;>Lecturer</span>";
+            status = 'Status <span class="badge badge-pill badge-warning">Lecturer</span>';
+            appendObjectToFooter(status,'status-div');
             break;
         case "Staff":
-            document.getElementById("status-btn").innerText =
-                "Status <span class=&quot;badge badge-pill badge-info&quot;>Staff</span>";
+            status = 'Status <span class="badge badge-pill badge-info">Staff</span>';
+            appendObjectToFooter(status,'status-div');
             break;
-        case "Admin":
-            document.getElementById("status-btn").innerText =
-                "Status <span class=&quot;badge badge-pill badge-light&quot;>Admin</span>";
+        case "Admins":
+            status = 'Status <span class="badge badge-pill badge-light">Admin</span>';
+            appendObjectToFooter(status,'status-div');
             break;
         default:
-            document.getElementById("status-btn").innerText =
-                "Status <span class=&quot;badge badge-pill badge-danger&quot;>Anonymous</span>";
+            status = 'Status <span class="badge badge-pill badge-danger">Anonymous</span>';
+            appendObjectToFooter(status,'status-div');
     }
 }
 
@@ -91,6 +93,7 @@ function validate(id, password, role) {
                 body.removeChild(elem);
             }
             appendObjectToBody(mainBody);
+            returnRole(role);
             incorrect_modal.style.display = null;
         } else {incorrect_modal.style.display = "block";}
       

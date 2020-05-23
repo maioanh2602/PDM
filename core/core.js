@@ -27,8 +27,9 @@ function appendObjectToNav(msg = '', class_ = '') {
 
 //Body Object
 const body = document.getElementById("body");
-function appendObjectToBody(msg = '') {
+function appendObjectToBody(msg = '', class_ = '') {
   const div = document.createElement('div');
+  if (class_ != '') div.className = class_;
   div.innerHTML = msg;
   body.appendChild(div);
 }
@@ -40,6 +41,16 @@ function appendObjectToFooter(msg = '', class_ = '') {
   if (class_ != '') div.className = class_;
   div.innerHTML = msg;
   footer.appendChild(div);
+}
+
+//BookInfo Object
+const bookshelf = document.getElementById("bookshelf");
+function appendBooktoBookshelf(msg = '', class_ = '') {
+  const div = document.createElement('div');
+  if (class_ != '') div.className = class_;
+  div.innerHTML = msg;
+  console.log(bookshelf);
+  bookshelf.appendChild(div);
 }
 
 // When a new message is received:
@@ -82,12 +93,11 @@ nav = '\
         </div>';
 
 searchBox = '\
-        <div class="input-bar-item"><input class="mr-sm-0" type="text" placeholder="Search something here..."></div> \
-        <div class="input-bar-item"><button class="btn btn-secondary my-2 my-sm-2">Search</button></div> \
+        <div class="input-bar-item"><input id="search-items" class="mr-sm-0" type="text" placeholder="Search something here..."></div> \
+        <div class="input-bar-item"><button id="search-btn" class="btn btn-secondary my-2 my-sm-2">Search</button></div> \
   ';
 
 welcomeBody = '  \
-<div class="welcome no-transparent">  \
   <h1 class="display-3">Welcome to <br>IU Library!</h1>  \
   <h3 class="lead"> Brief newsletter today</h3>  \
   <hr style="width:80%" class="my-4"/>  \
@@ -98,13 +108,15 @@ welcomeBody = '  \
   <p class="lead">  \
     <a class="btn btn-primary" href="https://library.hcmiu.edu.vn/" role="button">Learn more</a>  \
   </p>  \
-</div>  \
-<div class="middle">  \
+';
+
+lineBody = '  \
   <div class="or-spacer-vertical right">  \
-    <div class="mask"></div>  \
+  <div class="mask"></div>  \
   </div>  \
-</div>  \
-<div class="loginform no-transparent">  \
+';
+
+loginBody = ' \
   <form name="loginForm"">  \
     <fieldset>  \
       <legend>  \
@@ -135,13 +147,10 @@ welcomeBody = '  \
 </fieldset>  \
 </form>  \
 <button id="btn-login" class="btn btn-primary">Login</button>  \
-</div>  \
 <div id="clear"></div>  \
 ';
 
-mainBody = '\
-<h1> Hi </h1> \
-';
+mainBody = '';
 
 copyright = 'PDM Project &copy 2020 - App by Mai Oanh - Trương Đạt - Minh Quan';
 
@@ -152,11 +161,38 @@ closeButton = ' \
         </footer> \
 ';
 
+showBookInfo = '<p id="bookshelf"><h2>Search Result</h2></p>';
+
+function setBookInfo(title = '', author = '', isbn = '', price = '', publisher = '', cate = '') {
+  bookInfo = '\
+          <div class="card text-white bg-dark mb-3" style="max-width: 20rem;"> \
+          <div class="card-header">'+ title + '</div> \
+          <div class="card-body"> \
+            <h4 class="card-title">'+ author + '</h4> \
+            <p class="card-text"> \
+                ISBN: '+ isbn + '<br/> \
+                Publisher: '+ publisher + '<br/> \
+                Price: '+ price + '<br/> \
+                Category: '+ cate + '<br/> \
+            </p> \
+          </div> \
+          </div> \
+  ';
+  return (bookInfo);
+}
+clearBody = '';
+
 //add to browser
 appendObjectToNav(logo);
 appendObjectToNav(nav);
 appendObjectToNav(searchBox, 'input-bar');
-appendObjectToBody(welcomeBody);
+
+appendObjectToBody(welcomeBody,'welcome no-transparent');
+// appendObjectToBody(showBookInfo, 'showbook-half');
+appendObjectToBody(lineBody, 'middle');
+appendObjectToBody(loginBody, 'loginform no-transparent');
+appendObjectToBody(clearBody, 'clear');
+
 appendObjectToFooter(closeButton);
 appendObjectToFooter(copyright, 'copyright-div');
 appendObjectToFooter(status, 'status-div');

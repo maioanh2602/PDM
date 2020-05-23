@@ -84,7 +84,7 @@ div.status-div {
   text-align: left;
 }
 
-#clear { 
+.clear { 
   clear: both;
 }
 
@@ -98,6 +98,20 @@ div.status-div {
   width: 60%;
   margin: auto;
   text-align: center;
+}
+
+.showBook-half {
+  float:left;
+  width: 60%;
+  margin: auto;
+  text-align: left;
+}
+
+.showBook-full {
+  float:left;
+  width: 100%;
+  margin: auto;
+  text-align: left;
 }
 
 .or-spacer-vertical {

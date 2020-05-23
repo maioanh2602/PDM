@@ -1,5 +1,5 @@
 {
-  "name": "sysinfoapp",
+  "name": "hcmiulibapp",
   "version": "1.0.0",
   "description": "Library Management Project",
   "main": "./core/main.js",
@@ -9,7 +9,8 @@
   "author": "Jerry Nguyen",
   "license": "ISC",
   "dependencies": {
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "yarn": "^1.22.4"
   },
   "devDependencies": {
     "electron": "^8.2.5"

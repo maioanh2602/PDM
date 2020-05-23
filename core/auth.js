@@ -65,29 +65,40 @@ function validate(id, password, role) {
         "'";
 
     var name = "";
-    connection.connect(function (err) {
-        if (err) throw err;
-        console.log(sql);
-        connection.query(sql, function (e, result) {
-            if (e) throw e;
-            name = result[0]["User_Name"];
+    // console.log(sql);
+    connection.query(sql, function (e, result) {
+        if (e) throw e;
+        if (result[0] != void (0)) {
+            // name = result[0]["User_Name"];
             // console.log(name);
-            if (name != "") {
-                document.getElementById("content").innerText =
-                    "Login Successfully!\nWelcome " + name;
-                incorrect_modal.style.display = "block";
-                // alert("Hi");
-            } else {
-                document.getElementById("content").innerText =
-                    "The UserID or Password or Role is incorrect or empty";
-                incorrect_modal.style.display = "block";
-            }
-        });
-        connection.query(sql_role, function(e, r) {
-            if (e) throw e;
-            console.log(r[0]["User_ID"]);
-        })
+            document.getElementById("content").innerText =
+                "Sorry " + id + " !\nPlease check your login information again.";
+            incorrect_modal.style.display = "block";
+            return;
+            // alert("Hi");
+        } else {
+            document.getElementById("content").innerText =
+                "The UserID or Password or Role is incorrect or empty";
+            return;
+        }
     });
+    connection.query(sql_role, function (e, r) {
+        if (e) throw e;
+        // console.log(r[0]);
+        incorrect_modal.style.display = null;
+        if (r[0] != void (0)) {
+            while (elem = body.firstChild) {
+                body.removeChild(elem);
+            }
+            appendObjectToBody(mainBody);
+            incorrect_modal.style.display = null;
+        } else {incorrect_modal.style.display = "block";}
+      
+    })
+
+    return;
+
+
 }
 
 function validateForm() {
@@ -108,3 +119,9 @@ function validateForm() {
         validate(user_id, user_password, user_role);
     }
 }
+
+document
+    .getElementById("btn-login")
+    .addEventListener("click", function (e) {
+        validateForm();
+    });

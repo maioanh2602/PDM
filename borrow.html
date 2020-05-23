@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+  <title>HCMIU Library Management</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="background">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-inner">
+    <a class="navbar-brand" href="#">
+      <div class="logo-grid">
+        <div class="item1"> <img src="./img/iu_logo.png" alt="" style="width:75%"> </div>
+        <div class="item2">Library</div>
+        <div class="item3">International University</div>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Research</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Request</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Accounts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="jumbotron is-transparent">
+
+    <div class="welcome no-transparent">
+      <h1 class="display-3">Welcome to <br>IU Library!</h1>
+      <p class="lead"> Brief newsletter today</p>
+      <hr class="my-4">
+      <p>>> UWE Student: Take home exam tips</p>
+      <p>>> 21 April: Vietnam Book Day</p>
+      <p>>> Library Opening Hours</p>
+      <hr class="my-4">
+      <p class="lead">
+        <a class="btn btn-primary" href="https://library.hcmiu.edu.vn/" role="button">Learn more</a>
+      </p>
+    </div>
+    <div class="middle">
+      <div class="or-spacer-vertical right">
+        <div class="mask"></div>
+      </div>
+    </div>
+    <div class="loginform no-transparent">
+      <form name="loginForm"">
+        <fieldset>
+          <legend>
+            <h1>Login</h1>
+          </legend>
+          <div class=" form-group">
+        <label for="inputID">User ID </label>
+        <input type="text" class="form-control" id="inputID" name="userID" aria-describedby="IDHelp"
+          placeholder="Enter your ID" required>
+        <small id="IDHelp" class="form-text text-muted">Student ID for Student and Lecturer emailname for
+          Lecturer.</small>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" id="inputPassword" name="userPassword" placeholder="Password"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="selectRole">I am a </label>
+      <select class="form-control role" id="inputRole" name="userRole" required>
+        <option value="" selected disabled>Please select your own role</option>
+        <option value="Student">Student</option>
+        <option value="Lecturer">Lecturer</option>
+        <option value="Staff">Staff</option>
+        <option value="Admins">Admin</option>
+      </select>
+    </div>
+  </fieldset>
+</form>
+<button id="btn-login" class="btn btn-primary">Login</button>
+  </div>
+  <div id="clear"></div>
+  </div>
+  <footer>
+    <div> <button id="close-btn" type="button" class="btn btn-primary">QUIT</button> </div>
+    <div class="copyright-div">PDM Project &copy 2020 - App by Mai Oanh - Trương Đạt - Minh Quan </div>
+    <div class="status">
+      <button id="status-btn" type="button" class="btn status btn-primary" disabled> Status
+        <!-- <span class="badge badge-pill badge-success">Student</span> -->
+        <!-- <span class="badge badge-pill badge-warning">Lecturer</span> -->
+        <!-- <span class="badge badge-pill badge-info">Staff</span> -->
+        <!-- <span class="badge badge-pill badge-light">Admin</span> -->
+        <span class="badge badge-pill badge-danger">Anonymous</span>
+      </button>
+    </div>
+  </footer>
+
+  <div id="close-modal" class="modal close-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">EXIT</h5>
+          <button type="button" id="btn-close-x" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to close the application?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-close-yes" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="incorrect-modal" class="modal margin-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Alert!</h5>
+          <button type="button" id="btn-incorrect-x" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="content"></div>
+        <div class="modal-footer">
+          <button type="button" id="btn-incorrect-yes" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./core/connect.js"> </script>
+  <script src="./core/auth.js"> </script>
+  <script src="./core/core.js"> </script>
+
+</body>
+<!-- <script> require('./core/renderer.js'); </script> -->
+
+</html>

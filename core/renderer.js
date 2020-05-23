@@ -14,3 +14,23 @@
 
 	console.log('done');
 })();
+
+var actions = {
+	hide: function(elem) {
+	  elem.style.display = "none";
+	},
+	show: function(elem) {
+	  elem.style.display = null;
+	}
+  };
+  
+  function customQuery(query, action) {
+	for (var element of document.querySelectorAll(query)) {
+	  if (typeof element[action] === "function") element[action]();
+	  else actions[action](element);
+	}
+  }
+  
+  ipcRenderer.on("customQuery", function (event, ...args) {
+	customQuery(...args);
+  });

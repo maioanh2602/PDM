@@ -49,6 +49,7 @@ function appendBooktoBigBookshelf(msg = '', class_ = '') {
   const div = document.createElement('div');
   if (class_ != '') div.className = class_;
   div.innerHTML = msg;
+  div.className = "bookCard";
   document.getElementById("user-profile").style.display = "none";
   document.getElementById("search-result").appendChild(div);
   document.getElementById("search-result").style.display = "block";
@@ -175,7 +176,7 @@ showBookInfo = '<p id="bookshelf"><h2>Search Result</h2></p>';
 
 function setBookInfo(title = '', author = '', isbn = '', price = '', publisher = '', cate = '') {
   bookInfo = '\
-          <div class="card text-white bg-dark mb-3" style="max-width: 20rem;"> \
+          <div class="card text-white bg-dark mb-3 "> \
           <div class="card-header">ISBN '+ isbn + '</div> \
           <div class="card-body"> \
             <h4 class="card-title">'+ title + '</h4> \
@@ -197,8 +198,8 @@ appendObjectToNav(logo);
 appendObjectToNav(nav);
 appendObjectToNav(searchBox, 'input-bar');
 
-appendObjectToBody(showBookInfo, 'showbook-half','bookshelf');
-appendObjectToBody(welcomeBody,'welcome no-transparent','welcome');
+appendObjectToBody(showBookInfo, 'showbook-half', 'bookshelf');
+appendObjectToBody(welcomeBody, 'welcome no-transparent', 'welcome');
 appendObjectToBody(lineBody, 'middle');
 appendObjectToBody(loginBody, 'loginform no-transparent');
 appendObjectToBody(clearBody, 'clear');

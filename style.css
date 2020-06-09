@@ -188,3 +188,11 @@ select.role {
 div.search-box {
   display: table;
 }
+
+.bookCard {
+  min-width: 20rem;
+  max-width: 25rem;
+  display: inline-block;
+  margin: 10px 10px;
+  text-align: left;
+}

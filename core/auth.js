@@ -91,6 +91,9 @@ function validate(id, password, role) {
         if (r[0] != void (0)) {
             document.getElementById("body").style.display = "none";
             document.getElementById("user-profile").style.display = "block";
+            state = role;
+            console.log(state);
+            returnRole(state);
         } else { incorrect_modal.style.display = "block"; }
     })
     return;
@@ -125,22 +128,30 @@ function getBookInfo(itemSearch) {
               OR B.Author LIKE '%"+ search_data + "%' OR B.Price LIKE '%" + search_data + "%' \
               OR B.Category LIKE '%"+ search_data + "%' ;";
     // console.log("sql: " + sql);
+    // Remove old result
+    if (state == "Anonymous") {
+        divElement = document.getElementById("bookshelf");
+        while (elem = divElement.firstChild) {
+            divElement.removeChild(elem);
+        }
+    } else {
+        divElement = document.getElementById("search-result");
+        while (elem = divElement.firstChild) {
+            divElement.removeChild(elem);
+        }
+    }
+
+    // Check empty search
+    if (itemSearch == ''){
+        document.getElementById("content").innerText = "Search box is empty!";
+                incorrect_modal.style.display = "block";
+    } else
+    
+    // Query for finding a new result
     connection.query(sql, function (err, result) {
         if (err) { throw err; }
         console.log("Return:", result);
         if (result[0] != void (0)) {
-            var divElement;
-            if (state != "Anonymous") {
-                divElement = document.getElementById("bookshelf");
-                while (elem = divElement.firstChild) {
-                    divElement.removeChild(elem);
-                }
-            } else {
-                divElement = document.getElementById("search-result");
-                while (elem = divElement.firstChild) {
-                    divElement.removeChild(elem);
-                }
-            }
             iter = 0;
             while (result[iter] != void (0)) {
                 bookInfo = setBookInfo(result[iter]["Book_Title"],

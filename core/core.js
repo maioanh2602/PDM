@@ -27,9 +27,10 @@ function appendObjectToNav(msg = '', class_ = '') {
 
 //Body Object
 const body = document.getElementById("body");
-function appendObjectToBody(msg = '', class_ = '') {
+function appendObjectToBody(msg = '', class_ = '', id_ = '') {
   const div = document.createElement('div');
   if (class_ != '') div.className = class_;
+  if (id_ != '') div.id = id_;
   div.innerHTML = msg;
   body.appendChild(div);
 }
@@ -44,13 +45,22 @@ function appendObjectToFooter(msg = '', class_ = '') {
 }
 
 //BookInfo Object
-const bookshelf = document.getElementById("bookshelf");
-function appendBooktoBookshelf(msg = '', class_ = '') {
+function appendBooktoBigBookshelf(msg = '', class_ = '') {
   const div = document.createElement('div');
   if (class_ != '') div.className = class_;
   div.innerHTML = msg;
-  console.log(bookshelf);
-  bookshelf.appendChild(div);
+  document.getElementById("user-profile").style.display = "none";
+  document.getElementById("search-result").appendChild(div);
+  document.getElementById("search-result").style.display = "block";
+}
+
+function appendBooktoSmallBookshelf(msg = '', class_ = '') {
+  const div = document.createElement('div');
+  if (class_ != '') div.className = class_;
+  div.innerHTML = msg;
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("bookshelf").appendChild(div);
+  document.getElementById("bookshelf").style.display = "inline-block";
 }
 
 // When a new message is received:
@@ -65,7 +75,7 @@ logo = " \
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarColor01' \
           aria-controls='navbarColor01' aria-expanded='false' aria-label='Toggle navigation'> \
           <span class='navbar-toggler-icon'></span> \
-        </button>'); \
+        </button> \
 ";
 
 nav = '\
@@ -166,11 +176,11 @@ showBookInfo = '<p id="bookshelf"><h2>Search Result</h2></p>';
 function setBookInfo(title = '', author = '', isbn = '', price = '', publisher = '', cate = '') {
   bookInfo = '\
           <div class="card text-white bg-dark mb-3" style="max-width: 20rem;"> \
-          <div class="card-header">'+ title + '</div> \
+          <div class="card-header">ISBN '+ isbn + '</div> \
           <div class="card-body"> \
-            <h4 class="card-title">'+ author + '</h4> \
+            <h4 class="card-title">'+ title + '</h4> \
             <p class="card-text"> \
-                ISBN: '+ isbn + '<br/> \
+                Author: '+ author + '<br/> \
                 Publisher: '+ publisher + '<br/> \
                 Price: '+ price + '<br/> \
                 Category: '+ cate + '<br/> \
@@ -187,8 +197,8 @@ appendObjectToNav(logo);
 appendObjectToNav(nav);
 appendObjectToNav(searchBox, 'input-bar');
 
-appendObjectToBody(welcomeBody,'welcome no-transparent');
-// appendObjectToBody(showBookInfo, 'showbook-half');
+appendObjectToBody(showBookInfo, 'showbook-half','bookshelf');
+appendObjectToBody(welcomeBody,'welcome no-transparent','welcome');
 appendObjectToBody(lineBody, 'middle');
 appendObjectToBody(loginBody, 'loginform no-transparent');
 appendObjectToBody(clearBody, 'clear');
@@ -231,4 +241,9 @@ function keydown(event) {
     close_modal.style.display = "block";
   }
 }
+
+// hide search resulf div temporary
+document.getElementById("search-result").style.display = "none";
+document.getElementById("user-profile").style.display = "none";
+document.getElementById("bookshelf").style.display = "none";
 

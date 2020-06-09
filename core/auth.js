@@ -87,19 +87,12 @@ function validate(id, password, role) {
     connection.query(sql_role, function (e, r) {
         if (e) throw e;
         // console.log(r[0]);
-        incorrect_modal.style.display = null;
+        incorrect_modal.style.display = "none";
         if (r[0] != void (0)) {
-            while (elem = body.firstChild) {
-                body.removeChild(elem);
-            }
-            appendObjectToBody(mainBody);
-            state = role;
-            returnRole(role);
-            incorrect_modal.style.display = null;
+            document.getElementById("body").style.display = "none";
+            document.getElementById("user-profile").style.display = "block";
         } else { incorrect_modal.style.display = "block"; }
-
     })
-
     return;
 
 
@@ -136,29 +129,37 @@ function getBookInfo(itemSearch) {
         if (err) { throw err; }
         console.log("Return:", result);
         if (result[0] != void (0)) {
-            while (elem = body.firstChild) {
-                body.removeChild(elem);
+            var divElement;
+            if (state != "Anonymous") {
+                divElement = document.getElementById("bookshelf");
+                while (elem = divElement.firstChild) {
+                    divElement.removeChild(elem);
+                }
+            } else {
+                divElement = document.getElementById("search-result");
+                while (elem = divElement.firstChild) {
+                    divElement.removeChild(elem);
+                }
             }
-            if (state == "Anonymous") {
-                appendObjectToBody(showBookInfo, 'showBook-half');
-                appendObjectToBody(lineBody, 'middle');
-                appendObjectToBody(loginBody, 'loginform no-transparent');
-                appendObjectToBody(clearBody, 'clear');
-            } else { appendObjectToBody(showBookInfo, 'showBook-full'); }
-            // while (elem = bookshelf.firstChild ) {
-            //     bookshelf.removeChild(elem);
-            // }
             iter = 0;
             while (result[iter] != void (0)) {
-                info = setBookInfo(result[iter]["Book_Title"],
+                bookInfo = setBookInfo(result[iter]["Book_Title"],
                     result[iter]["Author"],
                     result[iter]["ISBN"],
                     result[iter]["Price"],
                     result[iter]["Pub_ID"],
                     result[iter]["Category"]);
-                appendBooktoBookshelf(info);
+                if (state != "Anonymous") {
+                    appendBooktoBigBookshelf(bookInfo);
+                } else {
+                    appendBooktoSmallBookshelf(bookInfo);
+                }
                 iter += 1;
             }
+            // while (elem = bookshelf.firstChild ) {
+            //     bookshelf.removeChild(elem);
+            // }
+
 
         } else {
             document.getElementById("content").innerText = "Cannot find your search request!";

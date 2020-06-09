@@ -59,6 +59,8 @@ function appendBooktoSmallBookshelf(msg = '', class_ = '') {
   const div = document.createElement('div');
   if (class_ != '') div.className = class_;
   div.innerHTML = msg;
+  div.style.maxWidth = '25rem';
+  div.style.minWidth = '20rem';
   document.getElementById("welcome").style.display = "none";
   document.getElementById("bookshelf").appendChild(div);
   document.getElementById("bookshelf").style.display = "inline-block";

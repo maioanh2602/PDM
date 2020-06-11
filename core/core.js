@@ -66,6 +66,18 @@ function appendBooktoSmallBookshelf(msg = '', class_ = '') {
   document.getElementById("bookshelf").style.display = "inline-block";
 }
 
+// Show user profile
+//Profile Object
+const profile = document.getElementById("user-profile");
+function appendProfile(msg = '', class_ = '', id_ = '') {
+  const div = document.createElement('div');
+  if (class_ != '') div.className = class_;
+  if (id_ != '') div.id = id_;
+  div.innerHTML = msg;
+  profile.appendChild(div);
+}
+
+
 // When a new message is received:
 logo = " \
         <a class='navbar-brand' href='#'> \
@@ -176,6 +188,10 @@ closeButton = ' \
 
 showBookInfo = '<p id="bookshelf"><h2>Search Result</h2></p>';
 
+userProfile = '  \
+  <h2>User Profile</h2>  \
+';
+
 function setBookInfo(title = '', author = '', isbn = '', price = '', publisher = '', cate = '') {
   bookInfo = '\
           <div class="card text-white bg-dark mb-3 "> \
@@ -205,6 +221,8 @@ appendObjectToBody(welcomeBody, 'welcome no-transparent', 'welcome');
 appendObjectToBody(lineBody, 'middle');
 appendObjectToBody(loginBody, 'loginform no-transparent');
 appendObjectToBody(clearBody, 'clear');
+
+appendProfile(userProfile);
 
 appendObjectToFooter(closeButton);
 appendObjectToFooter(copyright, 'copyright-div');

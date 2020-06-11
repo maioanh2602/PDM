@@ -34,7 +34,7 @@ function createWindow() {
         windows.show();
     });
     // Show devtools
-    windows.webContents.openDevTools();
+    // windows.webContents.openDevTools();
 
     windows.on("close", () => {
         win = null;

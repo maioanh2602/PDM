@@ -123,10 +123,10 @@ function validateForm() {
 function getBookInfo(itemSearch) {
     var search_data = itemSearch;
 
-    var sql = "SELECT B.* FROM Book B WHERE B.Book_Title LIKE '%" + search_data + "%' \
+    var sql = "SELECT B.Book_Title, B.Author, B.ISBN, B.Category, B.Price, P.Pub_Name  FROM Book B, Publisher P WHERE B.Pub_ID = P.Pub_ID AND (B.Book_Title LIKE '%" + search_data + "%' \
               OR B.ISBN LIKE '%"+ search_data + "%'  OR B.Pub_ID LIKE '%" + search_data + "%' \
               OR B.Author LIKE '%"+ search_data + "%' OR B.Price LIKE '%" + search_data + "%' \
-              OR B.Category LIKE '%"+ search_data + "%' ;";
+              OR B.Category LIKE '%"+ search_data + "%') ;";
     // console.log("sql: " + sql);
     // Remove old result
     if (state == "Anonymous") {
@@ -158,7 +158,7 @@ function getBookInfo(itemSearch) {
                     result[iter]["Author"],
                     result[iter]["ISBN"],
                     result[iter]["Price"],
-                    result[iter]["Pub_ID"],
+                    result[iter]["Pub_Name"],
                     result[iter]["Category"]);
                 if (state != "Anonymous") {
                     appendBooktoBigBookshelf(bookInfo);

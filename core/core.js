@@ -148,7 +148,7 @@ loginBody = ' \
     required>  \
 </div>  \
 <div class="form-group">  \
-  <label for="selectRole">I am a </label>  \
+  <label for="selectRole">Role </label>  \
   <select class="form-control role" id="inputRole" name="userRole" required>  \
     <option value="" selected disabled>Please select your own role</option>  \
     <option value="Student">Student</option>  \
